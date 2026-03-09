@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+
+ # app:
+#    build: .
+#    container_name: weather-app
+#    ports:
+#      - "8080:8080"
+#    environment:
+#      - OPENWEATHER_API_KEY=${OPENWEATHER_API_KEY}
+#    depends_on:
+#      - mongo
+#      - redis
+#    networks:
+#      - weather-network
+
+  mongo:
+    image: mongo:6.0
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+ #   networks:
+ #     - weather-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+  #  networks:
+  #    - weather-network
+
+# Docker volumes for persistence
+volumes:
+  mongo-data:
+
+networks:
+  weather-network:
