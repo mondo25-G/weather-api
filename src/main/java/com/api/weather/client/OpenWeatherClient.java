@@ -18,7 +18,7 @@ public class OpenWeatherClient {
     public WeatherResponseDTO getCurrentWeather(String city) {
         return openWeatherRestClient.get()
                 .uri(uriBuilder -> uriBuilder
-                        .path("/com/api/weather")
+                        .path("/weather")
                         .queryParam("q", city)
                         .queryParam("appid", apiKey)
                         .queryParam("units", "metric") // optional: Celsius
