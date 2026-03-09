@@ -1,9 +1,9 @@
 package com.api.weather.service;
 
-import com.app.weather.client.OpenWeatherClient;
-import com.app.weather.dto.WeatherResponseDTO;
-import com.app.weather.entity.WeatherRecord;
-import com.app.weather.repository.WeatherRepository;
+import com.api.weather.client.OpenWeatherClient;
+import com.api.weather.dto.WeatherResponseDTO;
+import com.api.weather.entity.WeatherRecord;
+import com.api.weather.repository.WeatherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;

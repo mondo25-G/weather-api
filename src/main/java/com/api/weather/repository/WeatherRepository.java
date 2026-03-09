@@ -1,6 +1,6 @@
 package com.api.weather.repository;
 
-import com.app.weather.entity.WeatherRecord;
+import com.api.weather.entity.WeatherRecord;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,7 @@
 package com.api.weather.controller;
 
-import com.app.weather.entity.WeatherRecord;
-import com.app.weather.service.WeatherService;
+import com.api.weather.entity.WeatherRecord;
+import com.api.weather.service.WeatherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

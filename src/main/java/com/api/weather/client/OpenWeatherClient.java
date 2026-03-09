@@ -1,6 +1,6 @@
 package com.api.weather.client;
 
-import com.app.weather.dto.WeatherResponseDTO;
+import com.api.weather.dto.WeatherResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
