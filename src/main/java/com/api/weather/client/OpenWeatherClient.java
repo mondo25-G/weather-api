@@ -21,7 +21,6 @@ public class OpenWeatherClient {
                         .path("/weather")
                         .queryParam("q", city)
                         .queryParam("appid", apiKey)
-                        .queryParam("units", "metric") // optional: Celsius
                         .build())
                 .retrieve()
                 .body(WeatherResponseDTO.class);
