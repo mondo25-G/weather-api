@@ -2,9 +2,13 @@ package com.api.weather.dto;
 
 import java.io.Serializable;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class WeatherRecordDTO {
 
     private String id;
@@ -37,4 +41,10 @@ public class WeatherRecordDTO {
     private Long timestamp;
     private Long sunrise;
     private Long sunset;
+
+    public WeatherRecordDTO(String city, Double temperature, String weatherMain) {
+        this.city = city;
+        this.temperature = temperature;
+        this.weatherMain = weatherMain;
+    }
 }
