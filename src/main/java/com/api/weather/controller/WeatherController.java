@@ -1,5 +1,6 @@
 package com.api.weather.controller;
 
+import com.api.weather.dto.WeatherRecordDTO;
 import com.api.weather.entity.WeatherRecord;
 import com.api.weather.service.WeatherService;
 import lombok.RequiredArgsConstructor;
@@ -22,8 +23,8 @@ public class WeatherController {
      * Get the current weather for a city.
      */
     @GetMapping
-    public ResponseEntity<WeatherRecord> getCurrentWeather(@RequestParam String city) {
-        WeatherRecord record = weatherService.getCurrentWeather(city);
+    public ResponseEntity<WeatherRecordDTO> getCurrentWeather(@RequestParam String city) {
+        WeatherRecordDTO record = weatherService.getCurrentWeather(city);
         return ResponseEntity.ok(record);
     }
 
@@ -31,11 +32,11 @@ public class WeatherController {
      * Get historical weather records for a city.
      */
     @GetMapping("/history")
-    public ResponseEntity<List<WeatherRecord>> getHistoricalWeather(
+    public ResponseEntity<List<WeatherRecordDTO>> getHistoricalWeather(
             @RequestParam String city,
             @RequestParam(defaultValue = "10") int limit) {
 
-        List<WeatherRecord> records = weatherService.getHistoricalWeather(city, limit);
+        List<WeatherRecordDTO> records = weatherService.getHistoricalWeather(city, limit);
         return ResponseEntity.ok(records);
     }
 }

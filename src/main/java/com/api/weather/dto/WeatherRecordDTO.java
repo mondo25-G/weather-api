@@ -1,16 +1,12 @@
-package com.api.weather.entity;
-
-import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+package com.api.weather.dto;
 
 import java.io.Serializable;
 
-@Data
-@Document(collection = "weather_records")
-public class WeatherRecord {
+import lombok.Data;
 
-    @Id
+@Data
+public class WeatherRecordDTO {
+
     private String id;
 
     private String city;
