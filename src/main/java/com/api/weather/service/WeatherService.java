@@ -16,35 +16,27 @@ import java.util.List;
 @RequiredArgsConstructor
 public class WeatherService {
 
-    private final OpenWeatherClient openWeatherClient;
+    private final OpenWeatherClient client;
     private final WeatherRepository weatherRepository;
     private final WeatherRecordMapper mapper;
 
 
     @Cacheable(value = "weatherCache", key = "#city")
-    public WeatherRecord getWeather(String city) {
+    public WeatherRecordDTO getCurrentWeather(String city) {
+        WeatherResponseDTO dto = client.getCurrentWeather(city);;
 
-        // Call OpenWeatherMap API
-        WeatherResponseDTO dto = openWeatherClient.getCurrentWeather(city);
-
-        // Map DTO to WeatherRecord
         WeatherRecord record = mapper.toEntity(dto);
 
-        // Save in MongoDB
         weatherRepository.save(record);
 
-        return record;
-    }
-
-    public WeatherRecordDTO getCurrentWeather(String city) {
-        WeatherRecord record = getWeather(city);
         return mapper.toDto(record);
     }
 
-
     public List<WeatherRecordDTO> getHistoricalWeather(String city, int limit) {
-        List<WeatherRecord> records = weatherRepository.findByCityOrderByTimestampDesc(city);
-        return records.stream().limit(limit).map(mapper::toDto).toList();
+        return weatherRepository.findByCityOrderByTimestampDesc(city)
+                .stream()
+                .limit(limit)
+                .map(mapper::toDto)
+                .toList();
     }
-
 }

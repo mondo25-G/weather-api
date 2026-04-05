@@ -1,6 +1,7 @@
 package com.api.weather.controller;
 
 import com.api.weather.dto.WeatherRecordDTO;
+import com.api.weather.dto.WeatherResponseDTO;
 import com.api.weather.entity.WeatherRecord;
 import com.api.weather.service.WeatherService;
 import lombok.RequiredArgsConstructor;
@@ -24,8 +25,8 @@ public class WeatherController {
      */
     @GetMapping
     public ResponseEntity<WeatherRecordDTO> getCurrentWeather(@RequestParam String city) {
-        WeatherRecordDTO record = weatherService.getCurrentWeather(city);
-        return ResponseEntity.ok(record);
+        WeatherRecordDTO recordDTO = weatherService.getCurrentWeather(city);
+        return ResponseEntity.ok(recordDTO);
     }
 
     /**

@@ -2,7 +2,7 @@ package com.api.weather.dto;
 
 import java.util.List;
 
-public record WeatherResponseDTO(
+public record WeatherResponseDTO (
         Coord coord,
         List<Weather> weather,
         String base,
