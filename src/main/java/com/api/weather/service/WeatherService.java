@@ -7,6 +7,7 @@ import com.api.weather.entity.WeatherRecord;
 import com.api.weather.mapping.WeatherRecordMapper;
 import com.api.weather.repository.WeatherRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class WeatherService {
 
     private final OpenWeatherClient client;
@@ -25,9 +27,13 @@ public class WeatherService {
     public WeatherRecordDTO getCurrentWeather(String city) {
         WeatherResponseDTO dto = client.getCurrentWeather(city);;
 
-        WeatherRecord record = mapper.toEntity(dto);
 
+        WeatherRecord record = mapper.toEntity(dto);
+        log.info("mapper: record id {}",record.getId());
+
+        record.setId(null);
         weatherRepository.save(record);
+        log.info("repos: record id {}",record.getId());
 
         return mapper.toDto(record);
     }
