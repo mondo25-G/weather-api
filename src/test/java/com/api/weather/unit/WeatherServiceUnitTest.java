@@ -76,11 +76,11 @@ class WeatherServiceUnitTest {
         when(mapper.toEntity(responseDTO)).thenReturn(recordEntity);
 
         // Simulate caching manually
-        WeatherRecord firstCall = weatherService.getWeather(city);
+        WeatherRecordDTO firstCall = weatherService.getCurrentWeather(city);
         weatherCache.put(city, firstCall);
 
         // Second call → fetch from manual cache instead of API
-        WeatherRecord cachedCall = (WeatherRecord) weatherCache.get(city).get();
+        WeatherRecordDTO cachedCall = (WeatherRecordDTO) weatherCache.get(city).get();
 
         assertSame(firstCall, cachedCall);
         verify(openWeatherClient, times(1)).getCurrentWeather(city);

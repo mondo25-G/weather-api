@@ -22,16 +22,16 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
- #   networks:
- #     - weather-network
+    networks:
+      - weather-network
 
   redis:
-    image: redis:7-alpine
-    container_name: redis
-    ports:
-      - "6379:6379"
-  #  networks:
-  #    - weather-network
+   image: redis:7-alpine
+   container_name: redis
+   ports:
+    - "6379:6379"
+   networks:
+    - weather-network
 
 # Docker volumes for persistence
 volumes:
