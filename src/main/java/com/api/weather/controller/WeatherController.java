@@ -1,8 +1,6 @@
 package com.api.weather.controller;
 
 import com.api.weather.dto.WeatherRecordDTO;
-import com.api.weather.dto.WeatherResponseDTO;
-import com.api.weather.entity.WeatherRecord;
 import com.api.weather.service.WeatherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
